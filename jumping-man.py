@@ -3,7 +3,7 @@ import sys
 
 
 def printGrid(grid):
-    font_size = 36
+    font_size = 20
    
     font = pygame.font.Font(None, font_size)
 
@@ -15,7 +15,7 @@ def printGrid(grid):
                 color = (255, 255, 255)
             text_surface = font.render(str(element), True, color)
             # Calculate position
-            position = (col_index * font_size * 1.5, row_index * font_size * 1.5)
+            position = (col_index * font_size * 2, row_index * font_size * 2)
             screen.blit(text_surface, position)
 
     # for i in range(len(grid)):
@@ -62,7 +62,7 @@ if __name__ == '__main__':
     BLACK = (0, 0, 0)
 
     # Load a font
-    font_size = 36
+    font_size = 20
     font = pygame.font.Font(None, font_size)
 
 
@@ -79,16 +79,18 @@ if __name__ == '__main__':
         # Blit text surfaces to the screen
         # Render text
         xHeight = 11
-        yHeight = 7
+        yHeight = 11
         thisGrid = [[0 for i in range(2 * yHeight + 1)] for j in range(2 * xHeight + 1)]
-        for age in [9]:
+        for age in range(1, 11):
             printGrid(gridPlotter(thisGrid, age))
+            pygame.time.wait(1000)
+            
+            # Update display
+            pygame.display.flip()
+            screen.fill(BLACK)
             # screen.blit(font.render("--"*100, True, RED))
             # screen.blit(font.render("--" * 100, True, RED))
         
-
-        # Update display
-        pygame.display.flip()
 
     # Quit Pygame
     pygame.quit()
